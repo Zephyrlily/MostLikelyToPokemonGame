@@ -1,0 +1,25 @@
+# Ignore .env file
+.env
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+*.tmp
+
+# Ignore Visual Studio files
+.vscode/
+.vs/
+.idea/
+
+# Ignore OS generated files
+Thumbs.db
+.DS_Store
