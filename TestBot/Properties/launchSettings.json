@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PokemonGame": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\vapor\\Documents\\Pokemon Game\\TestBot"
+    }
+  }
+}

@@ -26,6 +26,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Numerics;
 using DotNetEnv;
+using dotenv.net;
 
 namespace TestBot
 {
@@ -54,6 +55,23 @@ namespace TestBot
         
         public async Task RunBotAsync()
         {
+            DotEnv.Load();
+
+            Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
+            Console.WriteLine($"DISCORD_BOT_TOKEN: {Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN")}");
+
+
+            
+
+            // Get the Discord bot token
+            token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Console.WriteLine("Error: Token is null or empty.");
+                return;
+            }
+
             _client = new DiscordSocketClient(new DiscordSocketConfig
             {
                 GatewayIntents = GatewayIntents.All,
@@ -66,10 +84,6 @@ namespace TestBot
                 return Task.CompletedTask;
 
             };
-
-            Env.Load();
-            // Get the Discord bot token
-            string token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
 
             await RegisterCommandsAsync();
             await _client.LoginAsync(TokenType.Bot, token);
